@@ -55,15 +55,16 @@ if __name__ == '__main__':
 
   if args.dir != None:
     workflows = filter(lambda path: path.endswith('.yml'), os.listdir(args.dir))
-    for workflow in workflows:
-      linter = new Linter(args.dir + '/' + workflow)
-      
-      if not linter.lint(addMarkers=True):
-        success = False
+    workflows = map(lambda path: args.dir + '/' + path)
   else:
-    linter = new Linter(args.file)
-    success = linter.lint(addMarkers=True)
-    
+    workflows = [args.file]
+  
+  for workflow in workflows:
+    linter = Linter(args.dir + '/' + workflow)
+      
+    if not linter.lint(addMarkers=True):
+      success = False
+  
   if !success:
     sys.exit(1)
 

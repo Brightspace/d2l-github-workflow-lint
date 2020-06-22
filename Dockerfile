@@ -6,4 +6,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY lint.py ./
 
-CMD ["python", "./lint.py"]
+CMD ["python", "/app/lint.py"]

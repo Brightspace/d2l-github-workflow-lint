@@ -14,8 +14,10 @@ def checkForTimeout(f, jobId, job):
 
   error(f, job, 'Please explicitly set timeout-minutes (to a low value) to prevent run-away jobs')
 
-def lint(workflowPath):
-  print('::group name=' + workflowPath + '::Linting ' + workflowPath)
+def lint(workflowPath, addMarkers=False):
+  if addMarkers:
+    print('::group name=' + workflowPath + '::Linting ' + workflowPath)
+
   yaml = ruamel.yaml.YAML()
   with open(workflowPath) as f:
     workflow = yaml.load(f.read())
@@ -24,7 +26,8 @@ def lint(workflowPath):
   for jobId in workflow['jobs']:
     checkForTimeout(workflowPath, jobId, workflow['jobs'][jobId])
 
-  print('::endgroup::')
+  if addMarkers:
+    print('::endgroup::')
 
 #####
 
@@ -44,7 +47,7 @@ if args.file == None and args.dir == None:
 if args.dir != None:
   workflows = filter(lambda path: path.endswith('.yml'), os.listdir(args.dir))
   for workflow in workflows:
-      lint(args.dir + '/' + workflow)
+      lint(args.dir + '/' + workflow, addMarkers=True)
 else:
-  lint(args.file)
+  lint(args.file, addMarkers=True)
 

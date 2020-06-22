@@ -2,7 +2,7 @@ import io
 import sys
 import unittest
 
-from lint import lint
+from lint import Linter
 
 class Tests(unittest.TestCase):
   def setUp(self):
@@ -17,7 +17,9 @@ class Tests(unittest.TestCase):
     return self.out.getvalue().strip()
 
   def test_missing_timeout(self):
-    lint('test-data/missing-job-timeout.yml')
+    linter = Linter('test-data/missing-job-timeout.yml')
+    success = linter.lint()
+    self.assertFalse(success)
     self.assertEqual(self.stdout(), '::error file=test-data/missing-job-timeout.yml,line=7,col=4::Please explicitly set timeout-minutes (to a low value) to prevent run-away jobs')
 
 if __name__ == '__main__':

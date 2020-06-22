@@ -18,12 +18,13 @@ on:
 
 jobs:
   lint:
-  runs-on: [self-hosted, Linux]
-  steps:
-    - name: Checkout
-      uses: Brightspace/third-party-actions@actions/checkout
-    - name: Lint
-      uses: Brightspace/d2l-github-workflow-lint@master
+    runs-on: [self-hosted, Linux]
+    timeout-minutes: 2
+    steps:
+      - name: Checkout
+        uses: Brightspace/third-party-actions@actions/checkout
+      - name: Lint
+        uses: Brightspace/d2l-github-workflow-lint@master
 ```
 
 Things of note:

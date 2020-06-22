@@ -4,7 +4,7 @@ A linter for GitHub Action workflows, specific to D2L.
 
 ## Usage
 
-Add the file `.github/workflows/d2l-workflow-lint.yml` (please use this file name) with these contents:
+Add the file `.github/workflows/d2l-github-workflow-lint.yml` (please use this file name) with these contents:
 
 ```yaml
 name: Workflow Lint

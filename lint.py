@@ -61,7 +61,7 @@ if __name__ == '__main__':
     workflows = [args.file]
   
   for workflow in workflows:
-    linter = Linter(args.dir + '/' + workflow)
+    linter = Linter(workflow)
       
     if not linter.lint(addMarkers=True):
       success = False

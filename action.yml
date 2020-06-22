@@ -1,0 +1,5 @@
+name: D2L GitHub Action Workflow Linter
+description: Validates stuff about D2L GitHub Action workflows
+runs:
+  using: node12
+  main: lint.js

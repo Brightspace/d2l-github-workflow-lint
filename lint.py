@@ -54,8 +54,9 @@ if __name__ == '__main__':
     args.dir = '.github/workflows'
 
   if args.dir != None:
-    workflows = filter(lambda path: path.endswith('.yml'), os.listdir(args.dir))
-    workflows = map(lambda path: args.dir + '/' + path)
+    workflows = os.listdir(args.dir)
+    workflows = filter(lambda path: path.endswith('.yml'), workflows)
+    workflows = map(lambda path: args.dir + '/' + path, workflows)
   else:
     workflows = [args.file]
   

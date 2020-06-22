@@ -1,0 +1,16 @@
+name: Test the linter
+on: pull_request
+jobs:
+  test:
+    timeout-minutes: 1
+
+    # We can't use self-hosted runners in public repos
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: Brightspace/third-party-actions@actions/checkout
+      - name: Our workflows should be good
+        uses: ./
+      - uses: Brightspace/third-party-actions@actions/setup-python
+      - run: pip install -r requirements.txt
+      - run: python tests.py

@@ -53,6 +53,7 @@ if __name__ == '__main__':
   if args.file == None and args.dir == None:
     args.dir = '.github/workflows'
 
+  workflows = []
   if args.dir != None:
     workflows = os.listdir(args.dir)
     workflows = filter(lambda path: path.endswith('.yml'), workflows)
@@ -60,6 +61,8 @@ if __name__ == '__main__':
   else:
     workflows = [args.file]
   
+  success = True
+
   for workflow in workflows:
     linter = Linter(workflow)
       
@@ -68,4 +71,3 @@ if __name__ == '__main__':
   
   if not success:
     sys.exit(1)
-

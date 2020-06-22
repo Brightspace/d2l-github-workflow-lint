@@ -2,7 +2,7 @@ import io
 import sys
 import unittest
 
-from lint import lint
+from lint import Linter
 
 class Tests(unittest.TestCase):
   def setUp(self):

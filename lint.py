@@ -31,7 +31,7 @@ class Linter:
 
     # Per-job lints
     for jobId in workflow['jobs']:
-      self.checkForTimeout(workflowPath, jobId, workflow['jobs'][jobId])
+      self.checkForTimeout(self.workflowPath, jobId, workflow['jobs'][jobId])
 
     if addMarkers:
       print('::endgroup::')

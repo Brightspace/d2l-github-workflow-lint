@@ -65,6 +65,6 @@ if __name__ == '__main__':
     if not linter.lint(addMarkers=True):
       success = False
   
-  if !success:
+  if not success:
     sys.exit(1)
 

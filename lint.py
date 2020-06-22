@@ -27,7 +27,7 @@ class Linter:
 
     yaml = ruamel.yaml.YAML()
     with open(self.workflowPath) as f:
-      workflow = yaml.load(self.workflowPath.read())
+      workflow = yaml.load(f.read())
 
     # Per-job lints
     for jobId in workflow['jobs']:

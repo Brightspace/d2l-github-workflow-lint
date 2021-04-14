@@ -18,7 +18,7 @@ on:
 
 jobs:
   lint:
-    runs-on: [self-hosted, Linux]
+    runs-on: [self-hosted, Linux, AWS]
     timeout-minutes: 2
     steps:
       - name: Checkout

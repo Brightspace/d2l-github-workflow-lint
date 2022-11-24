@@ -22,5 +22,10 @@ class Tests(unittest.TestCase):
     self.assertFalse(success)
     self.assertEqual(self.stdout(), '::error file=test-data/missing-job-timeout.yml,line=7,col=4::Please explicitly set timeout-minutes (to a low value) to prevent run-away jobs')
 
+  def test_missing_timeout(self):
+    linter = Linter('test-data/missing-job-timeout-call-workflow.yml')
+    success = linter.lint()
+    self.assertTrue(success)
+
 if __name__ == '__main__':
   unittest.main()

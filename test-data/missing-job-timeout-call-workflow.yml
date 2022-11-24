@@ -1,0 +1,12 @@
+name: "Hello, world!"
+
+on: [push]
+
+jobs:
+
+  build: # there should be a diagnostic here about missing timeout-minutes
+    name: Greeting
+    uses: Brightspace/terraform-workflows/.github/workflows/format.yml@v3
+    with:
+      terraform_version: 1.x
+      base_path: '.'

@@ -18,6 +18,8 @@ class Linter:
   def checkForTimeout(self, jobId, job):
     if 'timeout-minutes' in job:
       return
+    if 'uses' in job:
+      return
 
     self.error(job, 'Please explicitly set timeout-minutes (to a low value) to prevent run-away jobs')
 
